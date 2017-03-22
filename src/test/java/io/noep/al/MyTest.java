@@ -3,6 +3,11 @@ package io.noep.al;
 
 import org.junit.*;
 
+import static org.hamcrest.core.Is.is;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertThat;
+
 /**
  * Created by Taehoon Yoo
  * User  : taehoon
@@ -18,9 +23,15 @@ public class MyTest {
     @Test
     public void test() {
 
-        System.out.println("hello");
         MyClassTest myClassTest = new MyClassTest();
-        myClassTest.print();
+        assertEquals(myClassTest.getTest(), "print");
+        assertThat("print", is("print"));
+    }
+
+    @Test
+    public void test2() {
+        MyClassTest myClassTest = new MyClassTest();
+        assertNotEquals(myClassTest.getTest(), "actual");
 
     }
 }
