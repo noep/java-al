@@ -30,17 +30,22 @@ public interface MyList {
     /**
      * 노드 탐색
      */
-    void search();
+    Node search(int position);
 
     /**
-     * 노드 삭제
+     * 특정 위치의 노드 삭제
      */
-    void delete();
+    void delete(int position);
 
     /**
-     * 노드 삽입
+     * 특정 위치에 노드 삽입
      */
-    void insert();
+    void insert(int position, Node newNode);
+
+    /**
+     * 노드 개수
+     */
+    int size();
 
     Node getNode();
 }
