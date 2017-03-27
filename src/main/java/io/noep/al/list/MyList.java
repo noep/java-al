@@ -1,5 +1,7 @@
 package io.noep.al.list;
 
+import io.noep.al.node.SingleNode;
+
 /**
  * Created by Taehoon Yoo
  * User  : taehoon
@@ -23,14 +25,14 @@ public interface MyList {
 
     /**
      * 꼬리에 노드 추가
-     * @param newNode
+     * @param newSingleNode
      */
-    void append(Node newNode);
+    void append(SingleNode newSingleNode);
 
     /**
      * 노드 탐색
      */
-    Node search(int position);
+    SingleNode search(int position);
 
     /**
      * 특정 위치의 노드 삭제
@@ -40,12 +42,12 @@ public interface MyList {
     /**
      * 특정 위치에 노드 삽입
      */
-    void insert(int position, Node newNode);
+    void insert(int position, SingleNode newSingleNode);
 
     /**
      * 노드 개수
      */
     int size();
 
-    Node getNode();
+    SingleNode getNode();
 }

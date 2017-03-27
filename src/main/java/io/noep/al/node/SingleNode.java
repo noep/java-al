@@ -1,4 +1,4 @@
-package io.noep.al.list;
+package io.noep.al.node;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -16,12 +16,12 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class Node {
+public class SingleNode {
 
     private int data;
-    private Node node;
+    private SingleNode singleNode;
 
-    public Node(int data) {
+    public SingleNode(int data) {
         this.data = data;
     }
 }
