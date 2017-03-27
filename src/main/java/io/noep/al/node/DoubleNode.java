@@ -7,8 +7,8 @@ import lombok.Setter;
 /**
  * Created by Taehoon Yoo
  * User  : taehoon
- * Date  : 2017. 3. 23.
- * Time  : 오전 1:13
+ * Date  : 2017. 3. 25.
+ * Time  : 오후 10:50
  * Page  : http:noep.github.io
  * Email : noep@naver.com
  * Desc  :
@@ -16,16 +16,21 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class SingleNode extends Node {
+public class DoubleNode extends Node {
 
-    private SingleNode next;
+    private DoubleNode previous;
+    private DoubleNode next;
 
-    public SingleNode(int data) {
+    public DoubleNode(int data) {
         this.data = data;
     }
 
     @Override
     public Node getNext() {
         return next;
+    }
+
+    public Node getPrevious() {
+        return this.previous;
     }
 }

@@ -1,8 +1,8 @@
 package io.noep.al.list.impl;
 
 import io.noep.al.list.MyList;
+import io.noep.al.node.Node;
 import io.noep.al.node.SingleNode;
-import lombok.Getter;
 
 /**
  * Created by Taehoon Yoo
@@ -26,27 +26,27 @@ public class MyLinkedList implements MyList {
         this.singleNode = null;
     }
 
-    public void append(SingleNode newSingleNode) {
-        assert newSingleNode != null;
+    public void append(Node newNode) {
+        assert newNode != null;
 
         if (this.singleNode == null) {
-            this.singleNode = newSingleNode;
+            this.singleNode = (SingleNode) newNode;
         } else {
             SingleNode tail = this.singleNode;
-            while (tail.getSingleNode() != null) {
-                tail = tail.getSingleNode();
+            while (tail.getNext() != null) {
+                tail = (SingleNode) tail.getNext();
             }
-            tail.setSingleNode(newSingleNode);
+            tail.setNext((SingleNode) newNode);
         }
     }
 
-    public SingleNode search(int position) {
+    public Node search(int position) {
         assert position >= 0;
 
         SingleNode head = this.singleNode;
 
         while (head != null && --position >= 0) {
-            head = head.getSingleNode();
+            head = (SingleNode) head.getNext();
         }
 
         return head;
@@ -60,32 +60,32 @@ public class MyLinkedList implements MyList {
 
         while (head != null && --position >= 0) {
             beforeHead = head;
-            head = head.getSingleNode();
+            head = (SingleNode) head.getNext();
         }
 
         if (beforeHead == null && head != null) { //-- 첫 번째 노드
-            this.singleNode = this.singleNode.getSingleNode();
+            this.singleNode = (SingleNode) this.singleNode.getNext();
         } else if (beforeHead != null && head != null) { //-- 중간 노드
-            beforeHead.setSingleNode(head.getSingleNode());
+            beforeHead.setNext((SingleNode) head.getNext());
         }
     }
 
-    public void insert(int position, SingleNode newSingleNode) {
-        assert singleNode != null;
+    public void insert(int position, Node newNode) {
+        assert newNode != null;
         assert position >= 0;
 
         SingleNode head = this.singleNode;
 
         while (head != null && --position >= 0) {
-            head = head.getSingleNode();
+            head = (SingleNode) head.getNext();
         }
 
-        if (head.getSingleNode() != null) {
-            SingleNode pushed = head.getSingleNode();
-            newSingleNode.setSingleNode(pushed);
-            head.setSingleNode(newSingleNode);
+        if (head.getNext() != null) {
+            SingleNode pushed = (SingleNode) head.getNext();
+            ((SingleNode) newNode).setNext(pushed);
+            head.setNext((SingleNode) newNode);
         } else {
-            head.setSingleNode(newSingleNode);
+            head.setNext((SingleNode) newNode);
         }
     }
 
@@ -95,14 +95,14 @@ public class MyLinkedList implements MyList {
         int count = 0;
 
         while (head != null) {
-            count ++;
-            head = head.getSingleNode();
+            count++;
+            head = (SingleNode) head.getNext();
         }
 
         return count;
     }
 
-    public SingleNode getNode() {
+    public Node getNode() {
         return this.singleNode;
     }
 }
