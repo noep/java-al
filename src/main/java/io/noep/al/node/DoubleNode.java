@@ -26,11 +26,11 @@ public class DoubleNode extends Node {
     }
 
     @Override
-    public Node getNext() {
+    public DoubleNode getNext() {
         return next;
     }
 
-    public Node getPrevious() {
+    public DoubleNode getPrevious() {
         return this.previous;
     }
 }

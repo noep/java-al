@@ -112,7 +112,7 @@ public class MyDoubleLinkedList implements MyList {
         return count;
     }
 
-    public Node getNode() {
+    public DoubleNode getNode() {
         return this.doubleNode;
     }
 }
