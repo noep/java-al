@@ -33,4 +33,11 @@ public class DoubleNode extends Node {
     public DoubleNode getPrevious() {
         return this.previous;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        assert obj instanceof DoubleNode;
+
+        return ((DoubleNode) obj).getData() == this.getData();
+    }
 }

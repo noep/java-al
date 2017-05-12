@@ -16,11 +16,10 @@ import io.noep.al.node.SingleNode;
  */
 public class MyDoubleLinkedList implements MyList {
 
-    private DoubleNode doubleNode;
+    protected DoubleNode doubleNode;
 
     public void init(int data) {
-        this.doubleNode = new DoubleNode();
-        this.doubleNode.setData(data);
+        this.doubleNode = new DoubleNode(data);
     }
 
     public void destroy() {
@@ -43,13 +42,13 @@ public class MyDoubleLinkedList implements MyList {
 
     }
 
-    public Node search(int position) {
+    public DoubleNode search(int position) {
         assert position >= 0;
 
         DoubleNode head = this.doubleNode;
 
         while (head != null && --position >= 0) {
-            head = (DoubleNode) head.getNext();
+            head = head.getNext();
         }
 
         return head;
@@ -61,17 +60,17 @@ public class MyDoubleLinkedList implements MyList {
         DoubleNode head = this.doubleNode;
 
         while (head != null && --position >= 0) {
-            head = (DoubleNode) head.getNext();
+            head = head.getNext();
         }
 
         if (head != null && head.getPrevious() == null) { //-- 첫번째 노드
-            this.doubleNode = (DoubleNode) head.getNext();
-            ((DoubleNode) head.getNext()).setPrevious(this.doubleNode);
+            this.doubleNode = head.getNext();
+            head.getNext().setPrevious(this.doubleNode);
         } else if (head != null && head.getPrevious() != null) { //-- 중간 노드
-            ((DoubleNode) head.getPrevious()).setNext((DoubleNode) head.getNext());
+            head.getPrevious().setNext(head.getNext());
 
             if (head.getNext() != null) {
-                ((DoubleNode) head.getNext()).setPrevious((DoubleNode) head.getPrevious());
+                head.getNext().setPrevious(head.getPrevious());
             }
         }
     }
@@ -83,11 +82,11 @@ public class MyDoubleLinkedList implements MyList {
         DoubleNode head = this.doubleNode;
 
         while (head != null && --position >= 0) {
-            head = (DoubleNode) head.getNext();
+            head = head.getNext();
         }
 
         if (head.getNext() != null) {
-            DoubleNode pushed = (DoubleNode) head.getNext();
+            DoubleNode pushed = head.getNext();
             head.setNext((DoubleNode) newNode);
             ((DoubleNode) newNode).setNext(pushed);
 
@@ -106,7 +105,7 @@ public class MyDoubleLinkedList implements MyList {
 
         while (head != null) {
             count++;
-            head = (DoubleNode) head.getNext();
+            head = head.getNext();
         }
 
         return count;
